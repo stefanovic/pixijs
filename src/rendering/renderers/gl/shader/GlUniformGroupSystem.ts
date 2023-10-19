@@ -7,7 +7,7 @@ import type { UniformsSyncCallback } from '../../shared/shader/utils/createUnifo
 import type { System } from '../../shared/system/System';
 import type { GlRenderingContext } from '../context/GlRenderingContext';
 import type { WebGLRenderer } from '../WebGLRenderer';
-import type { GlProgram } from './GlProgram';
+import type { GlProgram, IUniformData } from './GlProgram';
 
 /** System plugin to the renderer to manage shaders. */
 export class GlUniformGroupSystem implements System
@@ -106,12 +106,17 @@ export class GlUniformGroupSystem implements System
 
         if (!this._cache[id])
         {
-            this._cache[id] = generateUniformsSync(group, program.uniformData);
+            this._cache[id] = this._generateUniformsSync(group, program.uniformData);
         }
 
         uniformGroupSyncHash[program.key] = this._cache[id];
 
         return uniformGroupSyncHash[program.key];
+    }
+
+    private _generateUniformsSync(group: UniformGroup, uniformData: Record<string, IUniformData>): UniformsSyncCallback
+    {
+        return generateUniformsSync(group, uniformData);
     }
 
     /**

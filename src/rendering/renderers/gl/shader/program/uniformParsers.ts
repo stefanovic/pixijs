@@ -63,6 +63,10 @@ export const uniformParsers: IUniformParser[] = [
             `
             gl.uniformMatrix3fv(ud["${name}"].location, false, uv["${name}"].toArray(true));
             `,
+        // exec: (gl: WebGLRenderingContext, loc: WebGLUniformLocation, value: any): void =>
+        // {
+        //     gl.uniformMatrix3fv(loc, false, value.toArray(true));
+        // }
     },
     // uploading a pixi point as a vec2 with caching layer
     {

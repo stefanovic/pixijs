@@ -127,7 +127,8 @@
     "./lib/assets/init.*",
     "./lib/events/init.*",
     "./lib/spritesheet/init.*",
-    "./lib/rendering/init.*"
+    "./lib/rendering/init.*",
+    "./lib/unsafe-eval/init.*"
   ],
   "exports": {
     ".": {
@@ -210,6 +211,14 @@
       },
       "require": {
         "default": "./lib/rendering/init.js"
+      }
+    },
+    "./unsafe-eval": {
+      "import": {
+        "default": "./lib/unsafe-eval/init.mjs"
+      },
+      "require": {
+        "default": "./lib/unsafe-eval/init.js"
       }
     }
   }
